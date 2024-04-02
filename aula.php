@@ -14,4 +14,4 @@ function par_or_impar($a){
 
 
 
-echo par_or_impar(5);
+par_or_impar(5);
