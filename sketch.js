@@ -7,7 +7,7 @@ const W = "#fff"
 
 /// configuração de renderização
 
-var tela_atual = "jogar"
+var tela_atual = ""
 var cor_do_background = B
 
 const celula_de_desenho = 24 // bloco de 32x32 para cada tile
