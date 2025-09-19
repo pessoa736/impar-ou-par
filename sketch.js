@@ -410,6 +410,8 @@ function draw() {
       }else{
         image(dedo2, x2 - w2/2, y2 - h2/2, w2, h2)
       }
+
+      
       
       valor_antigo_do_mouse = mouseIsPressed
       
