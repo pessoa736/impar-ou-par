@@ -454,7 +454,7 @@ function draw() {
       h2 = tile_size*5
 
       if (bote_pode_jogar === true && time_jogo > 60){
-        dedo_selecionado_bot1 = random(0, 1) === 1
+        dedo_selecionado_bot1 = (time%2) === 1
       }
       
       if (dedo_selecionado_bot1 === true){
@@ -471,7 +471,7 @@ function draw() {
       h2 = tile_size*5
 
       if (bote_pode_jogar === true && time_jogo > 60){
-        dedo_selecionado_bot2 = random(0, 2) === 1
+        dedo_selecionado_bot2 =  (time%3) === 2
       }
       
       if (dedo_selecionado_bot2 === true){
@@ -488,7 +488,7 @@ function draw() {
       h2 = tile_size*5
       
       if (bote_pode_jogar === true && time_jogo > 60){
-        dedo_selecionado_bot3 = random(0, 3) === 1
+        dedo_selecionado_bot3 = (time%5) === 4
       }
 
       if (dedo_selecionado_bot3 === true){
@@ -505,7 +505,7 @@ function draw() {
       h2 = tile_size*5
 
       if (bote_pode_jogar === true && time_jogo > 60){
-        dedo_selecionado_bot4 = random(0, 4) === 1
+        dedo_selecionado_bot4 = (time%7) === 6
       }
 
       if (dedo_selecionado_bot4 === true){
@@ -522,7 +522,7 @@ function draw() {
       h2 = tile_size*5
       
       if (bote_pode_jogar === true && time_jogo > 60){
-        dedo_selecionado_bot5 = random(0, 5) === 1
+        dedo_selecionado_bot5 = (time%11) === 10
       }
 
       if (dedo_selecionado_bot5 === true){
@@ -539,7 +539,7 @@ function draw() {
       h2 = tile_size*5
       
       if (bote_pode_jogar === true && time_jogo > 60){
-        dedo_selecionado_bot6 = random(0, 6) === 1
+        dedo_selecionado_bot6 = (time%13) === 12
       }
 
       if (dedo_selecionado_bot6 === true){
@@ -556,7 +556,7 @@ function draw() {
       h2 = tile_size*5
       
       if (bote_pode_jogar === true && time_jogo > 60){
-        dedo_selecionado_bot7 = random(0, 7) === 1
+        dedo_selecionado_bot7 = (time%17) === 16
       }
 
       if (dedo_selecionado_bot7 === true){
@@ -573,7 +573,7 @@ function draw() {
       h2 = tile_size*5
       
       if (bote_pode_jogar === true && time_jogo > 60){
-        dedo_selecionado_bot8 = random(0, 8) === 1
+        dedo_selecionado_bot8 = (time%19) === 18
       }
 
       if (dedo_selecionado_bot8 === true){
@@ -590,7 +590,7 @@ function draw() {
       h2 = tile_size*5
       
       if (bote_pode_jogar === true && time_jogo > 60){
-        dedo_selecionado_bot9 = random(0, 9) === 1
+        dedo_selecionado_bot9 = (time%23) === 22
       }
 
       if (dedo_selecionado_bot9 === true){
@@ -607,7 +607,7 @@ function draw() {
       h2 = tile_size*5
       
       if (bote_pode_jogar === true && time_jogo > 60){
-        dedo_selecionado_bot10 = random(0, 10) === 1
+        dedo_selecionado_bot10 = (time%29) === 28
       }
 
       if (dedo_selecionado_bot10 === true){
@@ -621,6 +621,7 @@ function draw() {
       translate(-tamanho_da_tela_x, -tamanho_da_tela_y)
       
       if (estado_do_jogo === "escolha"){
+        bote_pode_jogar = false
         x2 = tamanho_da_tela_x*0.5
         y2 = tamanho_da_tela_y*0.15
         w2 = tile_size*9
