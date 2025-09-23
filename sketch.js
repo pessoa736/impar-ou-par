@@ -86,8 +86,6 @@ var dedo_selecionado_bot10 = false
 function preload(){
   dedo1 = loadImage("assets/dedo.png")
   dedo2 = loadImage("assets/dedo2.png")
-  dedoBot1 = loadImage("assets/dedoBot.png")
-  dedoBot2 = loadImage("assets/dedoBot2.png")
   background_ = loadImage("assets/background_jogo_lop.png")
   vinheta = loadImage("assets/vinheta_lop.png")
   sound = loadSound("assets/Red Shift - The Grey Room _ Density & Time(modificado no audacity).mp3")
@@ -605,9 +603,9 @@ function draw() {
       }
       
       if (dedo_selecionado_bot1 === true){
-        image(dedoBot1, x3 - w3/2, y3 - h3/2, w3, h3)
+        image(dedo1, x3 - w3/2, y3 - h3/2, w3, h3)
       }else{
-        image(dedoBot2, x3 - w3/2, y3 - h3/2, w3, h3)
+        image(dedo2, x3 - w3/2, y3 - h3/2, w3, h3)
       }
       
       // dedo 2
@@ -624,9 +622,9 @@ function draw() {
       }
       
       if (dedo_selecionado_bot2 === true){
-        image(dedoBot1, x3 - w3/2, y3 - h3/2, w3, h3)
+        image(dedo1, x3 - w3/2, y3 - h3/2, w3, h3)
       }else{
-        image(dedoBot2, x3 - w3/2, y3 - h3/2, w3, h3)
+        image(dedo2, x3 - w3/2, y3 - h3/2, w3, h3)
       }
 
       // dedo 3
@@ -643,9 +641,9 @@ function draw() {
       }
 
       if (dedo_selecionado_bot3 === true){
-        image(dedoBot1, x3 - w3/2, y3 - h3/2, w3, h3)
+        image(dedo1, x3 - w3/2, y3 - h3/2, w3, h3)
       }else{
-        image(dedoBot2, x3 - w3/2, y3 - h3/2, w3, h3)
+        image(dedo2, x3 - w3/2, y3 - h3/2, w3, h3)
       }
       
       // dedo 4
@@ -662,9 +660,9 @@ function draw() {
       }
 
       if (dedo_selecionado_bot4 === true){
-        image(dedoBot1, x3 - w3/2, y3 - h3/2, w3, h3)
+        image(dedo1, x3 - w3/2, y3 - h3/2, w3, h3)
       }else{
-        image(dedoBot2, x3 - w3/2, y3 - h3/2, w3, h3)
+        image(dedo2, x3 - w3/2, y3 - h3/2, w3, h3)
       }
 
       // dedo 5
@@ -681,9 +679,9 @@ function draw() {
       }
 
       if (dedo_selecionado_bot5 === true){
-        image(dedoBot1, x3 - w3/2, y3 - h3/2, w3, h3)
+        image(dedo1, x3 - w3/2, y3 - h3/2, w3, h3)
       }else{
-        image(dedoBot2, x3 - w3/2, y3 - h3/2, w3, h3)
+        image(dedo2, x3 - w3/2, y3 - h3/2, w3, h3)
       }
 
       // dedo 6
@@ -700,9 +698,9 @@ function draw() {
       }
 
       if (dedo_selecionado_bot6 === true){
-        image(dedoBot1, x3 - w3/2, y3 - h3/2, w3, h3)
+        image(dedo1, x3 - w3/2, y3 - h3/2, w3, h3)
       }else{
-        image(dedoBot2, x3 - w3/2, y3 - h3/2, w3, h3)
+        image(dedo2, x3 - w3/2, y3 - h3/2, w3, h3)
       }
 
       // dedo 7
@@ -719,9 +717,9 @@ function draw() {
       }
 
       if (dedo_selecionado_bot7 === true){
-        image(dedoBot1, x3 - w3/2, y3 - h3/2, w3, h3)
+        image(dedo1, x3 - w3/2, y3 - h3/2, w3, h3)
       }else{
-        image(dedoBot2, x3 - w3/2, y3 - h3/2, w3, h3)
+        image(dedo2, x3 - w3/2, y3 - h3/2, w3, h3)
       }
       
       // dedo 8
@@ -738,9 +736,9 @@ function draw() {
       }
 
       if (dedo_selecionado_bot8 === true){
-        image(dedoBot1, x3 - w3/2, y3 - h3/2, w3, h3)
+        image(dedo1, x3 - w3/2, y3 - h3/2, w3, h3)
       }else{
-        image(dedoBot2, x3 - w3/2, y3 - h3/2, w3, h3)
+        image(dedo2, x3 - w3/2, y3 - h3/2, w3, h3)
       }
 
       // dedo 9
@@ -757,9 +755,9 @@ function draw() {
       }
 
       if (dedo_selecionado_bot9 === true){
-        image(dedoBot1, x3 - w3/2, y3 - h3/2, w3, h3)
+        image(dedo1, x3 - w3/2, y3 - h3/2, w3, h3)
       }else{
-        image(dedoBot2, x3 - w3/2, y3 - h3/2, w3, h3)
+        image(dedo2, x3 - w3/2, y3 - h3/2, w3, h3)
       }
 
       // dedo 10
@@ -776,9 +774,9 @@ function draw() {
       }
 
       if (dedo_selecionado_bot10 === true){
-        image(dedoBot1, x3 - w3/2, y3 - h3/2, w3, h3)
+        image(dedo1, x3 - w3/2, y3 - h3/2, w3, h3)
       }else{
-        image(dedoBot2, x3 - w3/2, y3 - h3/2, w3, h3)
+        image(dedo2, x3 - w3/2, y3 - h3/2, w3, h3)
       }
 
       // Mostrar quantidade de dedos selecionados do jogador 2
