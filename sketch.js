@@ -20,7 +20,7 @@ var tamanho_da_tela_x = tile_size*24
 var  tamanho_da_tela_y = parseInt((tamanho_da_tela_x*aspect)/tile_size)*tile_size
 var  tamanho_de_text = parseInt(tile_size*0.75) 
 var valor_antigo_do_mouse = false
-
+var gap_dos_dedos = 0.075
 
 
 
@@ -133,13 +133,12 @@ function draw() {
   bg_y2 += bg_d2*0.3
 
   image(background_, -tile_size*4 + bg_x1, -tile_size*4 + bg_y1, tamanho_da_tela_x+tile_size*8, tamanho_da_tela_y+tile_size*8);
-  rotate(0.05)
+  rotate(0.075)
   image(background_, -tile_size*4 + bg_x2, -tile_size*4 + bg_y2, tamanho_da_tela_x+tile_size*8, tamanho_da_tela_y+tile_size*8);
-  rotate(-0.05)
+  rotate(-0.075)
   fill("rgba(255, 255, 255, 0.1)")  
   rect(0,0,tamanho_da_tela_x,tamanho_da_tela_y)
   
-
 
   
   /// as telas
@@ -259,34 +258,46 @@ function draw() {
     case "jogar":
       let x2, y2, w2, h2, text_2, n2
 
+
+      rotate(PI/2)
+      translate(0,-tamanho_da_tela_y)
+
+      // mouse no espaço rotacionado 90 graus
+      const mx = mouseY 
+      const my = tamanho_da_tela_y-mouseX
+
       // dedo 1
       n2 = 0
-      x2 = tamanho_da_tela_x*(n2*0.1 + 0.05)
+      x2 = tamanho_da_tela_x*(n2*gap_dos_dedos + gap_dos_dedos/2)
       y2 = tamanho_da_tela_y*0.9
       w2 = tile_size*2
       h2 = tile_size*5
-      
-      if (x2-w2/2 < mouseX && x2+w2/2 > mouseX && y2-h2/2 < mouseY && y2+h2/2 > mouseY){
-        if (mouseIsPressed === true && valor_antigo_do_mouse !== mouseIsPressed){
-          dedo_selecionado1 = !dedo_selecionado1
-        }
-      }
-      
+
       
       if (dedo_selecionado1 === true){
         image(dedo1, x2 - w2/2, y2 - h2/2, w2, h2)
       }else{
         image(dedo2, x2 - w2/2, y2 - h2/2, w2, h2)
       }
+
+      
+
+      if (x2-w2/2 < mx && x2+w2/2 > mx && y2-h2/2 < my && y2+h2/2 > my){
+        if (mouseIsPressed === true && valor_antigo_do_mouse !== mouseIsPressed){
+          dedo_selecionado1 = !dedo_selecionado1
+        }
+      }
+      
+      
       
       // dedo 2
       n2++
-      x2 = tamanho_da_tela_x*(n2*0.1 + 0.05)
+      x2 = tamanho_da_tela_x*(n2*gap_dos_dedos + gap_dos_dedos/2)
       y2 = tamanho_da_tela_y*0.9
       w2 = tile_size*2
       h2 = tile_size*5
-      
-      if (x2-w2/2 < mouseX && x2+w2/2 > mouseX && y2-h2/2 < mouseY && y2+h2/2 > mouseY){
+
+      if (x2-w2/2 < mx && x2+w2/2 > mx && y2-h2/2 < my && y2+h2/2 > my){
         if (mouseIsPressed === true && valor_antigo_do_mouse !== mouseIsPressed ){
           dedo_selecionado2 = !dedo_selecionado2
         }
@@ -299,12 +310,12 @@ function draw() {
 
       // dedo 3
       n2++
-      x2 = tamanho_da_tela_x*(n2*0.1 + 0.05)
+      x2 = tamanho_da_tela_x*(n2*gap_dos_dedos + gap_dos_dedos/2)
       y2 = tamanho_da_tela_y*0.9
       w2 = tile_size*2
       h2 = tile_size*5
-      
-      if (x2-w2/2 < mouseX && x2+w2/2 > mouseX && y2-h2/2 < mouseY && y2+h2/2 > mouseY){
+
+      if (x2-w2/2 < mx && x2+w2/2 > mx && y2-h2/2 < my && y2+h2/2 > my){
         if (mouseIsPressed === true && valor_antigo_do_mouse !== mouseIsPressed){
           dedo_selecionado3 = !dedo_selecionado3
         }
@@ -317,12 +328,12 @@ function draw() {
       
       // dedo 4
       n2++
-      x2 = tamanho_da_tela_x*(n2*0.1 + 0.05)
+      x2 = tamanho_da_tela_x*(n2*gap_dos_dedos + gap_dos_dedos/2)
       y2 = tamanho_da_tela_y*0.9
       w2 = tile_size*2
       h2 = tile_size*5
-      
-      if (x2-w2/2 < mouseX && x2+w2/2 > mouseX && y2-h2/2 < mouseY && y2+h2/2 > mouseY){
+
+      if (x2-w2/2 < mx && x2+w2/2 > mx && y2-h2/2 < my && y2+h2/2 > my){
         if (mouseIsPressed === true && valor_antigo_do_mouse !== mouseIsPressed){
           dedo_selecionado4 = !dedo_selecionado4
         }
@@ -335,12 +346,12 @@ function draw() {
 
       // dedo 5
       n2++
-      x2 = tamanho_da_tela_x*(n2*0.1 + 0.05)
+      x2 = tamanho_da_tela_x*(n2*gap_dos_dedos + gap_dos_dedos/2)
       y2 = tamanho_da_tela_y*0.9
       w2 = tile_size*2
       h2 = tile_size*5
-      
-      if (x2-w2/2 < mouseX && x2+w2/2 > mouseX && y2-h2/2 < mouseY && y2+h2/2 > mouseY){
+
+      if (x2-w2/2 < mx && x2+w2/2 > mx && y2-h2/2 < my && y2+h2/2 > my){
         if (mouseIsPressed === true && valor_antigo_do_mouse !== mouseIsPressed){
           dedo_selecionado5 = !dedo_selecionado5
         }
@@ -353,12 +364,12 @@ function draw() {
 
       // dedo 6
       n2++
-      x2 = tamanho_da_tela_x*(n2*0.1 + 0.05)
+      x2 = tamanho_da_tela_x*(n2*gap_dos_dedos + gap_dos_dedos/2)
       y2 = tamanho_da_tela_y*0.9
       w2 = tile_size*2
       h2 = tile_size*5
-      
-      if (x2-w2/2 < mouseX && x2+w2/2 > mouseX && y2-h2/2 < mouseY && y2+h2/2 > mouseY){
+
+      if (x2-w2/2 < mx && x2+w2/2 > mx && y2-h2/2 < my && y2+h2/2 > my){
         if (mouseIsPressed === true && valor_antigo_do_mouse !== mouseIsPressed){
           dedo_selecionado6 = !dedo_selecionado6
         }
@@ -371,12 +382,12 @@ function draw() {
 
       // dedo 7
       n2++
-      x2 = tamanho_da_tela_x*(n2*0.1 + 0.05)
+      x2 = tamanho_da_tela_x*(n2*gap_dos_dedos + gap_dos_dedos/2)
       y2 = tamanho_da_tela_y*0.9
       w2 = tile_size*2
       h2 = tile_size*5
-      
-      if (x2-w2/2 < mouseX && x2+w2/2 > mouseX && y2-h2/2 < mouseY && y2+h2/2 > mouseY){
+
+      if (x2-w2/2 < mx && x2+w2/2 > mx && y2-h2/2 < my && y2+h2/2 > my){
         if (mouseIsPressed === true && valor_antigo_do_mouse !== mouseIsPressed){
           dedo_selecionado7 = !dedo_selecionado7
         }
@@ -389,12 +400,12 @@ function draw() {
       
       // dedo 8
       n2++
-      x2 = tamanho_da_tela_x*(n2*0.1 + 0.05)
+      x2 = tamanho_da_tela_x*(n2*gap_dos_dedos + gap_dos_dedos/2)
       y2 = tamanho_da_tela_y*0.9
       w2 = tile_size*2
       h2 = tile_size*5
       
-      if (x2-w2/2 < mouseX && x2+w2/2 > mouseX && y2-h2/2 < mouseY && y2+h2/2 > mouseY){
+      if (x2-w2/2 < mx && x2+w2/2 > mx && y2-h2/2 < my && y2+h2/2 > my){
         if (mouseIsPressed === true && valor_antigo_do_mouse !== mouseIsPressed){
           dedo_selecionado8 = !dedo_selecionado8
         }
@@ -407,12 +418,12 @@ function draw() {
 
       // dedo 9
       n2++
-      x2 = tamanho_da_tela_x*(n2*0.1 + 0.05)
+      x2 = tamanho_da_tela_x*(n2*gap_dos_dedos + gap_dos_dedos/2)
       y2 = tamanho_da_tela_y*0.9
       w2 = tile_size*2
       h2 = tile_size*5
       
-      if (x2-w2/2 < mouseX && x2+w2/2 > mouseX && y2-h2/2 < mouseY && y2+h2/2 > mouseY){
+      if (x2-w2/2 < mx && x2+w2/2 > mx && y2-h2/2 < my && y2+h2/2 > my){
         if (mouseIsPressed === true && valor_antigo_do_mouse !== mouseIsPressed){
           dedo_selecionado9 = !dedo_selecionado9
         }
@@ -425,12 +436,12 @@ function draw() {
 
       // dedo 10
       n2++
-      x2 = tamanho_da_tela_x*(n2*0.1 + 0.05)
+      x2 = tamanho_da_tela_x*(n2*gap_dos_dedos + gap_dos_dedos/2)
       y2 = tamanho_da_tela_y*0.9
       w2 = tile_size*2
       h2 = tile_size*5
       
-      if (x2-w2/2 < mouseX && x2+w2/2 > mouseX && y2-h2/2 < mouseY && y2+h2/2 > mouseY){
+      if (x2-w2/2 < mx && x2+w2/2 > mx && y2-h2/2 < my && y2+h2/2 > my){
         if (mouseIsPressed === true && valor_antigo_do_mouse !== mouseIsPressed){
           dedo_selecionado10 = !dedo_selecionado10
         }
@@ -441,20 +452,27 @@ function draw() {
         image(dedo2, x2 - w2/2, y2 - h2/2, w2, h2)
       }
       
-      translate(tamanho_da_tela_x, tamanho_da_tela_y)
-      rotate(PI)
+  translate(tamanho_da_tela_x, tamanho_da_tela_y)
+  rotate(PI)
+
+  // mouse no espaço do JOGADOR 2 (após translate+rotate acima)
+  const mx2 = -(mx - tamanho_da_tela_x)
+  const my2 = -(my - tamanho_da_tela_y)
 
 
 
       // dedo do bot 1
       n2 = 0
-      x2 = tamanho_da_tela_x*(n2*0.1 + 0.05)
+      x2 = tamanho_da_tela_x*(n2*gap_dos_dedos + gap_dos_dedos/2)
       y2 = tamanho_da_tela_y*0.9
       w2 = tile_size*2
       h2 = tile_size*5
 
-      if (bote_pode_jogar === true && time_jogo > 60){
-        dedo_selecionado_bot1 = (time%2) === 1
+      // clique para alternar dedo do JOGADOR 2
+      if (x2-w2/2 < mx2 && x2+w2/2 > mx2 && y2-h2/2 < my2 && y2+h2/2 > my2){
+        if (mouseIsPressed === true && valor_antigo_do_mouse !== mouseIsPressed){
+          dedo_selecionado_bot1 = !dedo_selecionado_bot1
+        }
       }
       
       if (dedo_selecionado_bot1 === true){
@@ -465,13 +483,15 @@ function draw() {
       
       // dedo do bot 2
       n2++
-      x2 = tamanho_da_tela_x*(n2*0.1 + 0.05)
+      x2 = tamanho_da_tela_x*(n2*gap_dos_dedos + gap_dos_dedos/2)
       y2 = tamanho_da_tela_y*0.9
       w2 = tile_size*2
       h2 = tile_size*5
 
-      if (bote_pode_jogar === true && time_jogo > 60){
-        dedo_selecionado_bot2 =  (time%3) === 2
+      if (x2-w2/2 < mx2 && x2+w2/2 > mx2 && y2-h2/2 < my2 && y2+h2/2 > my2){
+        if (mouseIsPressed === true && valor_antigo_do_mouse !== mouseIsPressed ){
+          dedo_selecionado_bot2 = !dedo_selecionado_bot2
+        }
       }
       
       if (dedo_selecionado_bot2 === true){
@@ -482,13 +502,15 @@ function draw() {
 
       // dedo do bot 3
       n2++
-      x2 = tamanho_da_tela_x*(n2*0.1 + 0.05)
+      x2 = tamanho_da_tela_x*(n2*gap_dos_dedos + gap_dos_dedos/2)
       y2 = tamanho_da_tela_y*0.9
       w2 = tile_size*2
       h2 = tile_size*5
       
-      if (bote_pode_jogar === true && time_jogo > 60){
-        dedo_selecionado_bot3 = (time%5) === 4
+      if (x2-w2/2 < mx2 && x2+w2/2 > mx2 && y2-h2/2 < my2 && y2+h2/2 > my2){
+        if (mouseIsPressed === true && valor_antigo_do_mouse !== mouseIsPressed){
+          dedo_selecionado_bot3 = !dedo_selecionado_bot3
+        }
       }
 
       if (dedo_selecionado_bot3 === true){
@@ -499,13 +521,15 @@ function draw() {
       
       // dedo do bot 4
       n2++
-      x2 = tamanho_da_tela_x*(n2*0.1 + 0.05)
+      x2 = tamanho_da_tela_x*(n2*gap_dos_dedos + gap_dos_dedos/2)
       y2 = tamanho_da_tela_y*0.9
       w2 = tile_size*2
       h2 = tile_size*5
 
-      if (bote_pode_jogar === true && time_jogo > 60){
-        dedo_selecionado_bot4 = (time%7) === 6
+      if (x2-w2/2 < mx2 && x2+w2/2 > mx2 && y2-h2/2 < my2 && y2+h2/2 > my2){
+        if (mouseIsPressed === true && valor_antigo_do_mouse !== mouseIsPressed){
+          dedo_selecionado_bot4 = !dedo_selecionado_bot4
+        }
       }
 
       if (dedo_selecionado_bot4 === true){
@@ -516,13 +540,15 @@ function draw() {
 
       // dedo do bot 5
       n2++
-      x2 = tamanho_da_tela_x*(n2*0.1 + 0.05)
+      x2 = tamanho_da_tela_x*(n2*gap_dos_dedos + gap_dos_dedos/2)
       y2 = tamanho_da_tela_y*0.9
       w2 = tile_size*2
       h2 = tile_size*5
       
-      if (bote_pode_jogar === true && time_jogo > 60){
-        dedo_selecionado_bot5 = (time%11) === 10
+      if (x2-w2/2 < mx2 && x2+w2/2 > mx2 && y2-h2/2 < my2 && y2+h2/2 > my2){
+        if (mouseIsPressed === true && valor_antigo_do_mouse !== mouseIsPressed){
+          dedo_selecionado_bot5 = !dedo_selecionado_bot5
+        }
       }
 
       if (dedo_selecionado_bot5 === true){
@@ -533,13 +559,15 @@ function draw() {
 
       // dedo do bot 6
       n2++
-      x2 = tamanho_da_tela_x*(n2*0.1 + 0.05)
+      x2 = tamanho_da_tela_x*(n2*gap_dos_dedos + gap_dos_dedos/2)
       y2 = tamanho_da_tela_y*0.9
       w2 = tile_size*2
       h2 = tile_size*5
       
-      if (bote_pode_jogar === true && time_jogo > 60){
-        dedo_selecionado_bot6 = (time%13) === 12
+      if (x2-w2/2 < mx2 && x2+w2/2 > mx2 && y2-h2/2 < my2 && y2+h2/2 > my2){
+        if (mouseIsPressed === true && valor_antigo_do_mouse !== mouseIsPressed){
+          dedo_selecionado_bot6 = !dedo_selecionado_bot6
+        }
       }
 
       if (dedo_selecionado_bot6 === true){
@@ -550,13 +578,15 @@ function draw() {
 
       // dedo do bot7
       n2++
-      x2 = tamanho_da_tela_x*(n2*0.1 + 0.05)
+      x2 = tamanho_da_tela_x*(n2*gap_dos_dedos + gap_dos_dedos/2)
       y2 = tamanho_da_tela_y*0.9
       w2 = tile_size*2
       h2 = tile_size*5
       
-      if (bote_pode_jogar === true && time_jogo > 60){
-        dedo_selecionado_bot7 = (time%17) === 16
+      if (x2-w2/2 < mx2 && x2+w2/2 > mx2 && y2-h2/2 < my2 && y2+h2/2 > my2){
+        if (mouseIsPressed === true && valor_antigo_do_mouse !== mouseIsPressed){
+          dedo_selecionado_bot7 = !dedo_selecionado_bot7
+        }
       }
 
       if (dedo_selecionado_bot7 === true){
@@ -567,13 +597,15 @@ function draw() {
       
       // dedo do bot 8
       n2++
-      x2 = tamanho_da_tela_x*(n2*0.1 + 0.05)
+      x2 = tamanho_da_tela_x*(n2*gap_dos_dedos + gap_dos_dedos/2)
       y2 = tamanho_da_tela_y*0.9
       w2 = tile_size*2
       h2 = tile_size*5
       
-      if (bote_pode_jogar === true && time_jogo > 60){
-        dedo_selecionado_bot8 = (time%19) === 18
+      if (x2-w2/2 < mx2 && x2+w2/2 > mx2 && y2-h2/2 < my2 && y2+h2/2 > my2){
+        if (mouseIsPressed === true && valor_antigo_do_mouse !== mouseIsPressed){
+          dedo_selecionado_bot8 = !dedo_selecionado_bot8
+        }
       }
 
       if (dedo_selecionado_bot8 === true){
@@ -584,13 +616,15 @@ function draw() {
 
       // dedo do bot 9
       n2++
-      x2 = tamanho_da_tela_x*(n2*0.1 + 0.05)
+      x2 = tamanho_da_tela_x*(n2*gap_dos_dedos + gap_dos_dedos/2)
       y2 = tamanho_da_tela_y*0.9
       w2 = tile_size*2
       h2 = tile_size*5
       
-      if (bote_pode_jogar === true && time_jogo > 60){
-        dedo_selecionado_bot9 = (time%23) === 22
+      if (x2-w2/2 < mx2 && x2+w2/2 > mx2 && y2-h2/2 < my2 && y2+h2/2 > my2){
+        if (mouseIsPressed === true && valor_antigo_do_mouse !== mouseIsPressed){
+          dedo_selecionado_bot9 = !dedo_selecionado_bot9
+        }
       }
 
       if (dedo_selecionado_bot9 === true){
@@ -601,13 +635,15 @@ function draw() {
 
       // dedo do bot 10
       n2++
-      x2 = tamanho_da_tela_x*(n2*0.1 + 0.05)
+      x2 = tamanho_da_tela_x*(n2*gap_dos_dedos + gap_dos_dedos/2)
       y2 = tamanho_da_tela_y*0.9
       w2 = tile_size*2
       h2 = tile_size*5
       
-      if (bote_pode_jogar === true && time_jogo > 60){
-        dedo_selecionado_bot10 = (time%29) === 28
+      if (x2-w2/2 < mx2 && x2+w2/2 > mx2 && y2-h2/2 < my2 && y2+h2/2 > my2){
+        if (mouseIsPressed === true && valor_antigo_do_mouse !== mouseIsPressed){
+          dedo_selecionado_bot10 = !dedo_selecionado_bot10
+        }
       }
 
       if (dedo_selecionado_bot10 === true){
@@ -619,6 +655,8 @@ function draw() {
 
       rotate(-PI)
       translate(-tamanho_da_tela_x, -tamanho_da_tela_y)
+      translate(0, tamanho_da_tela_y)
+      rotate(-PI/2)
       
       if (estado_do_jogo === "escolha"){
         bote_pode_jogar = false
