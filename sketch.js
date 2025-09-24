@@ -40,6 +40,16 @@ var vinheta
 var vinheta_x = 0, vinheta_y = 0
 
 
+// posição e colisão do butão voltar
+var voltar_x, voltar_y, voltar_w, voltar_h, text_voltar
+
+voltar_x = tamanho_da_tela_x*0.1
+voltar_y = tile_size*1
+voltar_w = tile_size*4
+voltar_h = tile_size*1.5
+text_voltar = "VOLTAR"
+
+
 // sons
 var audioHabilitado = false
 var sound
@@ -47,14 +57,14 @@ var sound
 
 
 // mecanica de jogo
-var estado_do_jogo = "escolha" // "escolha", "escolha do bot", "resultado"
+var estado_do_jogo = "escolha" // "escolha",  "resultado"
 var jogador_atual = 1 // 1 para jogador 1, 2 para jogador 2
 var contador_de_dedos = 0
 var numero_escolhido = 0
 var numero_do_computador = 0
 var total_de_dedos = 0
 var bote_pode_jogar = false
-var escolha_par_ou_impar = "impar"
+var escolha_par_ou_impar = "par"
 
 
 var dedo_selecionado1 = false
@@ -260,12 +270,60 @@ function draw() {
     
     case "instruções":
       
+      // Botão voltar
+      fill(W)
+      rect(voltar_x - voltar_w/2 -3, voltar_y - voltar_h/2 -3, voltar_w+6, voltar_h+6, tile_size/2)
+      fill(B)
+      rect(voltar_x - voltar_w/2 -1, voltar_y - voltar_h/2 -1, voltar_w+2, voltar_h+2, tile_size/2)
+      fill(W)
+      rect(voltar_x - voltar_w/2, voltar_y - voltar_h/2, voltar_w, voltar_h, tile_size/2)
+      fill(B)
+      textSize(tamanho_de_text)
+      textAlign(CENTER)
+      text(text_voltar, voltar_x, voltar_y+tile_size/4)
+
+      if (voltar_x-voltar_w/2 < mouseX && voltar_x+voltar_w/2 > mouseX && voltar_y-voltar_h/2 < mouseY && voltar_y+voltar_h/2 > mouseY){
+        if (mouseIsPressed === true && valor_antigo_do_mouse !== mouseIsPressed){
+          tela_atual = "menu"
+        }
+      }
+      // atualiza o estado do clique para permitir detecção por borda
+      valor_antigo_do_mouse = mouseIsPressed
       
       break; 
       
       
       
       
+      
+      
+      
+      
+      
+      
+    case "creditos":
+      
+      // Botão voltar (usando diretamente voltar_*)
+      fill(W)
+      rect(voltar_x - voltar_w/2 -3, voltar_y - voltar_h/2 -3, voltar_w+6, voltar_h+6, tile_size/2)
+      fill(B)
+      rect(voltar_x - voltar_w/2 -1, voltar_y - voltar_h/2 -1, voltar_w+2, voltar_h+2, tile_size/2)
+      fill(W)
+      rect(voltar_x - voltar_w/2, voltar_y - voltar_h/2, voltar_w, voltar_h, tile_size/2)
+      fill(B)
+      textSize(tamanho_de_text)
+      textAlign(CENTER)
+      text(text_voltar, voltar_x, voltar_y+tile_size/4)
+
+      if (voltar_x-voltar_w/2 < mouseX && voltar_x+voltar_w/2 > mouseX && voltar_y-voltar_h/2 < mouseY && voltar_y+voltar_h/2 > mouseY){
+        if (mouseIsPressed === true && valor_antigo_do_mouse !== mouseIsPressed){
+          tela_atual = "menu"
+        }
+      }
+      // atualiza o estado do clique para permitir detecção por borda
+      valor_antigo_do_mouse = mouseIsPressed
+      
+      break;
       
       
       
@@ -284,11 +342,15 @@ function draw() {
 
 
       // Título indicando que é a vez do Jogador 1
+      fill(B)
+      rect(0, 0, tamanho_da_tela_x, tile_size*2)
       fill(W)
-      textSize(tamanho_de_text * 1.5)
+      textSize(tamanho_de_text * 1.25)
       textAlign(CENTER)
-      text("JOGADOR 1 - ESCOLHA SEUS DEDOS", tamanho_da_tela_x*0.5, tile_size*2)
+      text("JOGADOR 1 - ESCOLHA SEUS DEDOS", tamanho_da_tela_x*0.6, tile_size*1.25)
 
+
+      
       // dedo 1
       n2 = 0
       x2 = tamanho_da_tela_x*(n2*gap_dos_dedos + gap_dos_dedos/2)+todosDedosx
@@ -556,11 +618,11 @@ function draw() {
       h2 = tile_size*2
       text_2 = "PRÓXIMO JOGADOR"
 
-      fill(W)
-      rect(x2 - w2/2 -2, y2 - h2/2 -2, w2+4, h2+4, tile_size/2)
       fill(B)
-      rect(x2 - w2/2, y2-h2/2, w2, h2, tile_size/2)
+      rect(x2 - w2/2 -2, y2 - h2/2 -2, w2+4, h2+4, tile_size/2)
       fill(W)
+      rect(x2 - w2/2, y2-h2/2, w2, h2, tile_size/2)
+      fill(B)
       textSize(tamanho_de_text)
       textAlign(CENTER)
       text(text_2, x2, y2+tile_size/4)
@@ -568,6 +630,25 @@ function draw() {
       if (x2-w2/2 < mouseX && x2+w2/2 > mouseX && y2-h2/2 < mouseY && y2+h2/2 > mouseY){
         if (mouseIsPressed === true && valor_antigo_do_mouse !== mouseIsPressed && escolha_par_ou_impar !== ""){
           tela_atual = "jogador2"
+        }
+      }
+
+  // Botão voltar (usando diretamente voltar_*)
+
+      fill(W)
+      rect(voltar_x - voltar_w/2 -3, voltar_y - voltar_h/2 -3, voltar_w+6, voltar_h+6, tile_size/2)
+      fill(B)
+      rect(voltar_x - voltar_w/2 -1, voltar_y - voltar_h/2 -1, voltar_w+2, voltar_h+2, tile_size/2)
+      fill(W)
+      rect(voltar_x - voltar_w/2, voltar_y - voltar_h/2, voltar_w, voltar_h, tile_size/2)
+      fill(B)
+      textSize(tamanho_de_text)
+      textAlign(CENTER)
+      text(text_voltar, voltar_x, voltar_y+tile_size/4)
+
+      if (voltar_x-voltar_w/2 < mouseX && voltar_x+voltar_w/2 > mouseX && voltar_y-voltar_h/2 < mouseY && voltar_y+voltar_h/2 > mouseY){
+        if (mouseIsPressed === true && valor_antigo_do_mouse !== mouseIsPressed){
+          tela_atual = "menu"
         }
       }
 
@@ -582,11 +663,13 @@ function draw() {
       const mx3 = mouseX 
       const my3 = mouseY
 
-      // Título indicando que é a vez do Jogador 2
-      fill(W)
-      textSize(tamanho_de_text * 1.5)
-      textAlign(CENTER)
-      text("JOGADOR 2 - ESCOLHA SEUS DEDOS", tamanho_da_tela_x*0.5, tile_size*2)
+  // Título indicando que é a vez do Jogador 2 (replicando estilo do jogador1)
+  fill(B)
+  rect(0, 0, tamanho_da_tela_x, tile_size*2)
+  fill(W)
+  textSize(tamanho_de_text * 1.25)
+  textAlign(CENTER)
+  text("JOGADOR 2 - ESCOLHA SEUS DEDOS", tamanho_da_tela_x*0.6, tile_size*1.25)
 
       // Dedos do Jogador 2 (usando as variáveis bot)
       // dedo 1
@@ -799,6 +882,7 @@ function draw() {
       textAlign(CENTER)
       text("Dedos selecionados: " + contador_dedos_jogador2, tamanho_da_tela_x*0.175, tamanho_da_tela_y-tile_size*3/4)
 
+     
       // Botão para começar o jogo
       x3 = tamanho_da_tela_x*0.8
       y3 = tamanho_da_tela_y*0.2
@@ -806,11 +890,11 @@ function draw() {
       h3 = tile_size*2
       text_3 = "JOGAR"
 
-      fill(W)
-      rect(x3 - w3/2 -2, y3 - h3/2 -2, w3+4, h3+4, tile_size/2)
       fill(B)
-      rect(x3 - w3/2, y3-h3/2, w3, h3, tile_size/2)
+      rect(x3 - w3/2 -2, y3 - h3/2 -2, w3+4, h3+4, tile_size/2)
       fill(W)
+      rect(x3 - w3/2, y3-h3/2, w3, h3, tile_size/2)
+      fill(B)
       textSize(tamanho_de_text)
       textAlign(CENTER)
       text(text_3, x3, y3+tile_size/4)
@@ -824,15 +908,38 @@ function draw() {
         }
       }
 
+  // Botão voltar 
+
+      fill(W)
+      rect(voltar_x - voltar_w/2 -3, voltar_y - voltar_h/2 -3, voltar_w+6, voltar_h+6, tile_size/2)
+      fill(B)
+      rect(voltar_x - voltar_w/2 -1, voltar_y - voltar_h/2 -1, voltar_w+2, voltar_h+2, tile_size/2)
+      fill(W)
+      rect(voltar_x - voltar_w/2, voltar_y - voltar_h/2, voltar_w, voltar_h, tile_size/2)
+      fill(B)
+      textSize(tamanho_de_text)
+      textAlign(CENTER)
+      text(text_voltar, voltar_x, voltar_y+tile_size/4)
+
+      if (voltar_x-voltar_w/2 < mouseX && voltar_x+voltar_w/2 > mouseX && voltar_y-voltar_h/2 < mouseY && voltar_y+voltar_h/2 > mouseY){
+        if (mouseIsPressed === true && valor_antigo_do_mouse !== mouseIsPressed){
+          tela_atual = "jogador1"
+        }
+      }
+
       valor_antigo_do_mouse = mouseIsPressed
       break;
     
     case "resultado":
       // Implementar tela de resultado
-      fill(B)
+
+      fill("#000000bb")
+      rect(tamanho_da_tela_x*0.1, tamanho_da_tela_y*0.1, tamanho_da_tela_x*0.8, tamanho_da_tela_y*0.7, tile_size/2)
+      
+      fill(W)
       textSize(tamanho_de_text * 1.5)
       textAlign(CENTER)
-      text("RESULTADO DO JOGO", tamanho_da_tela_x*0.5, tile_size*2)
+      text("RESULTADO DO JOGO", tamanho_da_tela_x*0.5, tile_size*3)
       
       // Calcular resultado
       total_de_dedos = contador_de_dedos
@@ -847,7 +954,7 @@ function draw() {
       if (dedo_selecionado_bot9) total_de_dedos++
       if (dedo_selecionado_bot10) total_de_dedos++
       
-      fill(B)
+      fill(W)
       textSize(tamanho_de_text)
       text("Jogador 1: " + contador_de_dedos + " dedos", tamanho_da_tela_x*0.5, tile_size*4)
       
@@ -896,10 +1003,10 @@ function draw() {
       
       // Botão voltar ao menu
       fill(W)
-      rect(tamanho_da_tela_x*0.5 - tile_size*3, tile_size*12, tile_size*6, tile_size*2, tile_size/2)
+      rect(tamanho_da_tela_x*0.5 - tile_size*4, tile_size*12, tile_size*8, tile_size*2, tile_size/2)
       fill(B)
       textSize(tamanho_de_text)
-      text("VOLTAR AO MENU", tamanho_da_tela_x*0.5, tile_size*13)
+      text("VOLTAR AO MENU", tamanho_da_tela_x*0.5, tile_size*13.25)
       
       if (mouseX > tamanho_da_tela_x*0.5 - tile_size*3 && mouseX < tamanho_da_tela_x*0.5 + tile_size*3 && 
           mouseY > tile_size*12 && mouseY < tile_size*14){
@@ -933,6 +1040,7 @@ function draw() {
         }
       }
 
+
       valor_antigo_do_mouse = mouseIsPressed
 
       break;
@@ -943,6 +1051,7 @@ function draw() {
       tela_atual = "menu";  
       
   }
-  image(vinheta, vinheta_x*10-tamanho_da_tela_x*0.0635, vinheta_y*10-tamanho_da_tela_y*0.0635, tamanho_da_tela_x*1.125, tamanho_da_tela_y*1.125);
+  let zoom = 1.75
+  image(vinheta, vinheta_x*12-tamanho_da_tela_x*zoom/4, vinheta_y*12-tamanho_da_tela_y*zoom/4, tamanho_da_tela_x*zoom, tamanho_da_tela_y*zoom);
   time++
 }
