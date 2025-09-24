@@ -104,11 +104,11 @@ function preload(){
 
 
 function setup() {
-  // esse "getAudioContext()" é do p5.js não nativo do javascrip, eu não cheguei a criar essas funções, apenas chamei elas
+  // esse "getAudioContext" é do p5.js não nativo do javascrip, eu não cheguei a criar essas funções, apenas chamei elas
   getAudioContext().suspend();
   createCanvas(tamanho_da_tela_x, tamanho_da_tela_y);
 
-  /// esse ".setLoop()" é do p5.js não nativo do javascrip, eu não cheguei a criar essas funções, apenas chamei elas
+  /// esse ".setLoop" é do p5.js não nativo do javascrip, eu não cheguei a criar essas funções, apenas chamei elas
   sound.play()
 }
 
@@ -143,7 +143,7 @@ function draw() {
   bg_x1 += bg_d1*0.2
   bg_y2 += bg_d2*0.3
 
-  // animação da vinheta com movimento suave (sem Math)
+  // animação da vinheta com movimento suave sem Math
   var ciclo_x = (time * 0.015) % (3.14159 * 2)
   var ciclo_y = (time * 0.012) % (3.14159 * 2)
   
@@ -419,7 +419,7 @@ function draw() {
       let todosDedosx = 0; let todosDedosy = tamanho_da_tela_y*0.75
 
 
-      // mouse normal (sem rotação)
+  // mouse normal sem rotação
       const mx = mouseX 
       const my = mouseY
 
@@ -743,11 +743,11 @@ function draw() {
       let x3, y3, w3, h3, text_3, n3
       let todosDedosx2 = 0; let todosDedosy2 = tamanho_da_tela_y*0.75
 
-      // mouse normal (sem rotação)
+  // mouse normal sem rotação
       const mx3 = mouseX 
       const my3 = mouseY
 
-  // Título indicando que é a vez do Jogador 2 (replicando estilo do jogador1)
+  // Título indicando que é a vez do Jogador 2 replicando estilo do jogador1
   fill(B)
   rect(0, 0, tamanho_da_tela_x, tile_size*2)
   fill(W)
@@ -755,7 +755,7 @@ function draw() {
   textAlign(CENTER)
   text("JOGADOR 2 - ESCOLHA SEUS DEDOS", tamanho_da_tela_x*0.6, tile_size*1.25)
 
-      // Dedos do Jogador 2 (usando as variáveis bot)
+  // Dedos do Jogador 2 usando as variáveis bot
       // dedo 1
       n3 = 0
       x3 = tamanho_da_tela_x*(n3*gap_dos_dedos + gap_dos_dedos/2)+todosDedosx2
