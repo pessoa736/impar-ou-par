@@ -32,18 +32,12 @@ var time_jogo = 0
 
 // imagens
 var dedo1, dedo2 
-var dedoBot1, dedoBot2
 let bg_x1 = 0, bg_y1 = 0, bg_d1 = 1
 let bg_x2 = 0, bg_y2 = 0, bg_d2 = -1
 var background_
 var vinheta
 var vinheta_x = 0, vinheta_y = 0
-
-// informações e links (edite os valores entre aspas conforme necessário)
-var nome_aluno = "Seu Nome Completo" // substitua pelo seu nome
-var link_video = "https://youtu.be/SEU_VIDEO" // cole o link do vídeo explicativo
-var link_repo = "https://github.com/pessoa736/impar-ou-par"
-var link_jogo = "https://pessoa736.github.io/impar-ou-par/"
+var logo
 
 
 // posição e colisão do butão voltar
@@ -105,6 +99,7 @@ function preload(){
   background_ = loadImage("assets/background_jogo_lop.png")
   vinheta = loadImage("assets/vinheta_lop.png")
   sound = loadSound("assets/Red Shift - The Grey Room _ Density & Time(modificado no audacity).mp3")
+  logo = loadImage("assets/dedosDecepados.png")
 }
 
 
@@ -184,12 +179,21 @@ function draw() {
       
       
       let x, y, w, h, text_, n /// utilizarei essa mesmas variaveis para todos os butões no menu
+      
+      // desenha o logo na área esquerda do menu
+      if (logo) {
+        let lW = tile_size*12
+        let lH = tile_size*12
+        let lX = tamanho_da_tela_x*0.7 - lW/2
+        let lY = tamanho_da_tela_y*0.35 - lH/2
+        image(logo, lX, lY, lW, lH)
+      }
        
       
       // o butão de instruções
       n = 1
-      x = tamanho_da_tela_x*0.5
-      y = tile_size*(2+3*n)
+      x = tamanho_da_tela_x*0.25
+      y = tile_size*(6+3*n)
       w = tile_size*8
       h = tile_size*2
       text_ = "instruções"
@@ -216,8 +220,8 @@ function draw() {
       
       // o butão de jogar
       n++
-      x = tamanho_da_tela_x*0.5
-      y = tile_size*(2+3*n)
+      x = tamanho_da_tela_x*0.25
+      y = tile_size*(6+3*n)
       w = tile_size*8
       h = tile_size*2
       text_ = "jogar"
@@ -243,8 +247,8 @@ function draw() {
       
       // o butão de creditos
       n++
-      x = tamanho_da_tela_x*0.5
-      y = tile_size*(2+3*n)
+      x = tamanho_da_tela_x*0.25
+      y = tile_size*(6+3*n)
       w = tile_size*8
       h = tile_size*2
       text_ = "creditos"
@@ -281,7 +285,7 @@ function draw() {
       let iw = tamanho_da_tela_x*0.8
       let ih = tamanho_da_tela_y*0.75
 
-      // fundo do painel (semi-transparente, como na tela de resultado)
+      // fundo do painel 
       fill("#000000bb")
       rect(ix, iy, iw, ih, tile_size/2)
 
@@ -290,9 +294,11 @@ function draw() {
       textSize(tamanho_de_text * 1.5)
       textAlign(CENTER)
       text("INSTRUÇÕES", ix + iw/2, iy + tile_size*1.5)
+      
+      
 
-      // corpo do texto (parágrafos com quebras de linha)
-      textSize(tamanho_de_text)
+      // corpo do texto 
+      textSize(tamanho_de_text*0.6)
       textAlign(LEFT)
       var texto_instrucao = 
         "Objetivo\n" +
@@ -305,8 +311,7 @@ function draw() {
         "4) Resultado: a soma é exibida e o vencedor é destacado. Use 'VOLTAR AO MENU' para reiniciar.\n\n" +
         "Controles\n" +
         "- Mouse: clique para interagir com botões e dedos.\n" +
-        "- Áudio: clique uma vez em qualquer lugar da tela para habilitar o som.\n" +
-        "- Botão 'VOLTAR' no canto superior esquerdo retorna à tela anterior.";
+        "- Áudio: clique uma vez em qualquer lugar da tela para habilitar o som.\n" 
 
       // área interna com margens
       let margem = tile_size
@@ -346,7 +351,7 @@ function draw() {
     case "creditos":
       // Painel de créditos
       let cx = tamanho_da_tela_x*0.1
-      let cy = tamanho_da_tela_y*0.1
+      let cy = tamanho_da_tela_y*0.15
       let cw = tamanho_da_tela_x*0.8
       let ch = tamanho_da_tela_y*0.75
 
@@ -359,22 +364,25 @@ function draw() {
       textAlign(CENTER)
       text("CRÉDITOS", cx + cw/2, cy + tile_size*1.5)
 
+
       // conteúdo
       textAlign(LEFT)
-      textSize(tamanho_de_text)
+      textSize(tamanho_de_text*0.6)
       let ml = tile_size
       let ly = cy + tile_size*2.75
       let lh = tile_size*0.95
 
       
       text("Aluno desenvolvedor: ", cx + ml, ly); ml += tamanho_da_tela_x*0.4; 
-      text(nome_aluno, cx + ml, ly); ml -= tamanho_da_tela_x*0.4; ly += lh
+      text("Davi dos Santos Passos", cx + ml, ly); ml -= tamanho_da_tela_x*0.4; ly += lh
+      text("SubTurma: ", cx + ml, ly); ml += tamanho_da_tela_x*0.4; 
+      text("01B", cx + ml, ly); ml -= tamanho_da_tela_x*0.4; ly += lh
       
       text("Docente: ", cx + ml, ly); ml += tamanho_da_tela_x*0.4
       text("Marconi Rodrigues", cx + ml, ly); ml -= tamanho_da_tela_x*0.4; ly += lh
 
-      text("Componente:", cx + ml, ly);  ml += tamanho_da_tela_x*0.2
-      text("Lógica de Programação (ECT/UFRN)", cx + ml, ly); ml -= tamanho_da_tela_x*0.2; ly += lh
+      text("Componente:", cx + ml, ly);  ml += tamanho_da_tela_x*0.4
+      text("Lógica de Programação (ECT/UFRN)", cx + ml, ly); ml -= tamanho_da_tela_x*0.4; ly += lh
 
 
       
