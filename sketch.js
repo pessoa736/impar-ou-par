@@ -39,6 +39,12 @@ var background_
 var vinheta
 var vinheta_x = 0, vinheta_y = 0
 
+// informações e links (edite os valores entre aspas conforme necessário)
+var nome_aluno = "Seu Nome Completo" // substitua pelo seu nome
+var link_video = "https://youtu.be/SEU_VIDEO" // cole o link do vídeo explicativo
+var link_repo = "https://github.com/pessoa736/impar-ou-par"
+var link_jogo = "https://pessoa736.github.io/impar-ou-par/"
+
 
 // posição e colisão do butão voltar
 var voltar_x, voltar_y, voltar_w, voltar_h, text_voltar
@@ -269,6 +275,42 @@ function draw() {
       
     
     case "instruções":
+      // Painel principal de instruções
+      let ix = tamanho_da_tela_x*0.1
+      let iy = tamanho_da_tela_y*0.1
+      let iw = tamanho_da_tela_x*0.8
+      let ih = tamanho_da_tela_y*0.75
+
+      // fundo do painel (semi-transparente, como na tela de resultado)
+      fill("#000000bb")
+      rect(ix, iy, iw, ih, tile_size/2)
+
+      // título
+      fill(W)
+      textSize(tamanho_de_text * 1.5)
+      textAlign(CENTER)
+      text("INSTRUÇÕES", ix + iw/2, iy + tile_size*1.5)
+
+      // corpo do texto (parágrafos com quebras de linha)
+      textSize(tamanho_de_text)
+      textAlign(LEFT)
+      var texto_instrucao = 
+        "Objetivo\n" +
+        "Some o total de dedos levantados pelos dois jogadores. Se o total for PAR e você escolheu PAR, você vence; " +
+        "se o total for ÍMPAR e você escolheu ÍMPAR, você vence.\n\n" +
+        "Como jogar\n" +
+        "1) No menu, clique em 'jogar'.\n" +
+        "2) Jogador 1: clique nos dedos para selecionar/deselecionar. Use as alavancas para escolher PAR ou ÍMPAR e clique em 'PRÓXIMO JOGADOR'.\n" +
+        "3) Jogador 2: clique nos dedos para selecionar e depois clique em 'JOGAR'.\n" +
+        "4) Resultado: a soma é exibida e o vencedor é destacado. Use 'VOLTAR AO MENU' para reiniciar.\n\n" +
+        "Controles\n" +
+        "- Mouse: clique para interagir com botões e dedos.\n" +
+        "- Áudio: clique uma vez em qualquer lugar da tela para habilitar o som.\n" +
+        "- Botão 'VOLTAR' no canto superior esquerdo retorna à tela anterior.";
+
+      // área interna com margens
+      let margem = tile_size
+      text(texto_instrucao, ix + margem, iy + tile_size*2.5, iw - margem*2, ih - tile_size*3)
       
       // Botão voltar
       fill(W)
@@ -302,8 +344,42 @@ function draw() {
       
       
     case "creditos":
+      // Painel de créditos
+      let cx = tamanho_da_tela_x*0.1
+      let cy = tamanho_da_tela_y*0.1
+      let cw = tamanho_da_tela_x*0.8
+      let ch = tamanho_da_tela_y*0.75
+
+      fill("#000000bb")
+      rect(cx, cy, cw, ch, tile_size/2)
+
+      // título
+      fill(W)
+      textSize(tamanho_de_text * 1.5)
+      textAlign(CENTER)
+      text("CRÉDITOS", cx + cw/2, cy + tile_size*1.5)
+
+      // conteúdo
+      textAlign(LEFT)
+      textSize(tamanho_de_text)
+      let ml = tile_size
+      let ly = cy + tile_size*2.75
+      let lh = tile_size*0.95
+
       
-      // Botão voltar (usando diretamente voltar_*)
+      text("Aluno desenvolvedor: ", cx + ml, ly); ml += tamanho_da_tela_x*0.4; 
+      text(nome_aluno, cx + ml, ly); ml -= tamanho_da_tela_x*0.4; ly += lh
+      
+      text("Docente: ", cx + ml, ly); ml += tamanho_da_tela_x*0.4
+      text("Marconi Rodrigues", cx + ml, ly); ml -= tamanho_da_tela_x*0.4; ly += lh
+
+      text("Componente:", cx + ml, ly);  ml += tamanho_da_tela_x*0.2
+      text("Lógica de Programação (ECT/UFRN)", cx + ml, ly); ml -= tamanho_da_tela_x*0.2; ly += lh
+
+
+      
+
+      // Botão voltar
       fill(W)
       rect(voltar_x - voltar_w/2 -3, voltar_y - voltar_h/2 -3, voltar_w+6, voltar_h+6, tile_size/2)
       fill(B)
@@ -633,7 +709,7 @@ function draw() {
         }
       }
 
-  // Botão voltar (usando diretamente voltar_*)
+  // Botão voltar 
 
       fill(W)
       rect(voltar_x - voltar_w/2 -3, voltar_y - voltar_h/2 -3, voltar_w+6, voltar_h+6, tile_size/2)
