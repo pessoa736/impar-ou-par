@@ -242,6 +242,8 @@ function draw() {
           tela_atual = "jogador1"
         }
       }
+
+      
       
       
       
@@ -295,6 +297,7 @@ function draw() {
       textAlign(CENTER)
       text("INSTRUÇÕES", ix + iw/2, iy + tile_size*1.5)
       
+
       
 
       // corpo do texto 
@@ -317,6 +320,10 @@ function draw() {
       let margem = tile_size
       text(texto_instrucao, ix + margem, iy + tile_size*2.5, iw - margem*2, ih - tile_size*3)
       
+
+
+
+
       // Botão voltar
       fill(W)
       rect(voltar_x - voltar_w/2 -3, voltar_y - voltar_h/2 -3, voltar_w+6, voltar_h+6, tile_size/2)
